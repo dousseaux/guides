@@ -20,3 +20,8 @@ convert '*.jpg[250x>]' thumb-300-%03d.png`
 ```
 convert "images/*.jpg[250x>]" -set filename:base "%[base]" "images/new_folder/%[filename:base].jpg"
 ```
+
+### 4. Compress and Progressive image - SEO recommendation
+```
+convert *.jpg -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace RGB -set filename:base "%[base]" "temp/%[filename:base].jpg"
+```

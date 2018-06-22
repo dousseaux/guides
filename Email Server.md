@@ -103,7 +103,15 @@ Restarting iRedAPD service is required.
 
 #### Disable required encryption to optional
 
-Edit /etc/postfix/master.cf
+__Edit `/etc/postfix/main.cf`__
+Make sure the following options are as following
+```
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_security_options = noanonymous
+# smtpd_tls_auth_only=yes
+```
+
+__Edit `/etc/postfix/master.cf`__
 Find `smtpd_tls_security_level` and change its value to `may` as shown below.
 
 ```

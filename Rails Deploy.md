@@ -1,11 +1,13 @@
-# Deploy Rails with Capistrano and Puma
+# Deploy Rails App With Capistrano and Puma
 
 Pedro Dousseau
+
 May 8th, 2017
 
 ### 1. Install Gems and start Capistrano
-<br>
+
 __Gemfile:__
+
 ```
 gem 'figaro'
 gem 'puma'
@@ -19,13 +21,16 @@ end
 ```
 
 __Run:__
+
 ```
 $ bundle install
 $ cap install STAGES=production
 ```
+
 ### 2. Edit capistrano files
-<br>
+
 __Add the following to /Capfile:__
+
 ```
 require 'capistrano/bundler'
 require 'capistrano/rbenv'
@@ -35,6 +40,7 @@ require 'capistrano/puma'
 ```
 
 __Edit /config/deploy.rb to:__
+
 ```
 lock '3.4.0'
 
@@ -59,6 +65,7 @@ set :rbenv_roles, :all
 Do the following on your server.
 
 __Create the application folders and files:__
+
 ```
 $ mkdir -p /var/www/app_name/shared/config
 $ nano     /var/www/app_name/shared/config/database.yml
@@ -66,6 +73,7 @@ $ nano     /var/www/app_name/shared/config/application.yml
 ```
 
 __Add the following to database.yml:__
+
 ```
 production:
   adapter: mysql2
@@ -78,6 +86,7 @@ production:
 ```
 
 __Add the following to application.yml:__
+
 ```
 SECRET_KEY_BASE: "8a2ff74119cb2b8f14a85dd6e213fa24d8540fc34dcaa7ef8a35c246ae452bfa8702767d19086461ac911e1435481c22663fbd65c97f21f6a91b3fce7687ce63"
 ```
@@ -85,20 +94,21 @@ SECRET_KEY_BASE: "8a2ff74119cb2b8f14a85dd6e213fa24d8540fc34dcaa7ef8a35c246ae452b
 Run `$ rake secret` to create a new one.
 
 ### 4. Deploy from local machine
-<br>
+
 __Add the following to config/deploy/production.rb:__
+
 ```
 server 'my_ip_or_hostname', user: 'my_user', roles: %w{web app db}
 ```
 
 __Run:__
+
 ```
-cap production deploy
+$ cap production deploy
 ```
 
 ### 5. Start puma on server
 
-<br>
 __On the server, run:__
 
 ```
@@ -110,11 +120,10 @@ This will start puma web server on production enviroment and run in background.
 
 ### 6. Mantain
 
-<br>
 Every time that you want to deploy a new version, push it to  git and run:
 
 ```
-cap production deploy
+$ cap production deploy
 ```
 
 ### 7. Extra:

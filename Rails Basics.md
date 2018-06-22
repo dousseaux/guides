@@ -1,6 +1,6 @@
 # RAILS MUST KNOW
 
-## 1\. How it works
+## 1. How it works
 
 ### Rails works in a MVC architecture.
 
@@ -12,7 +12,7 @@ A model is the data, and how you get it. The controller is what makes you applic
 - A view must be related with some controller.
 - The route must match with a controller action.
 
-## 3\. Install and run
+## 2. Install and run
 
 Install it from [here](http://installrails.com/). If you are using linux I recommned installing it using the rbenv method.
 
@@ -31,7 +31,7 @@ $ bundle install
 $ rails server
 ```
 
-## 4\. Models
+## 3. Models
 
 A model is an abstraction of how your data works. It is made of a database and Ruby object. The object controls you database and is accessible from your controller.
 
@@ -44,7 +44,7 @@ $ rake db:migrate
 
 Where prm is a property of your model (table) and prm_type os the type of the property. The second line migrates the model to your database.
 
-## 5\. Controllers
+## 4. Controllers
 
 The controller will contain the logic of the app. It will operate the models and respond to the view actions.
 
@@ -60,11 +60,11 @@ To create a controller with a view:
 $ rails generate controller controller_name_goes_here view_name_goes_here
 ```
 
-## 6\. Views
+## 5. Views
 
 A view is always related to some controller. A view is is always a something.html.erb or something.html.haml file inside of app/views/correspondent_controller_name folder. This will render data and interact with users. A view must a have a route for it.
 
-## 7\. Routes
+## 6. Routes
 
 Routes define how views are accessed from the browser and also which method should respond to it. It is how the decode the URL into commands. You can manage them in the config/routes.rb file and view the routing configuration by running:
 
@@ -72,7 +72,7 @@ Routes define how views are accessed from the browser and also which method shou
 $ rake routes
 ```
 
-## 8\. Rails objects
+## 7. Rails objects
 
 - ### Model objects (Active records):
 
@@ -80,15 +80,15 @@ $ rake routes
 
 - ### params:
 
-  #### 1\. User supplied parameters
+  #### 1. User supplied parameters
 
   GET (<http://domain.com/url?param1=value1&param2=value2> will set params[:param1] and params[:param2]) POST (e.g. JSON, XML will automatically be parsed and stored in params) Note: By default, Rails duplicates the user supplied parameters and stores them in params[:user] if in UsersController, can be changed with wrap_parameters setting
 
-  #### 2\. Routing parameters
+  #### 2. Routing parameters
 
   match '/user/:id' in routes.rb will set params[:id]
 
-  #### 3.Default parameters
+  #### 3. Default parameters
 
   params[:controller] and params[:action] are always available and contains the current controller and action<br>
 
@@ -105,7 +105,7 @@ $ rake routes
 
   They are available to methods of the class and also for the view.
 
-## 9\. Types for Model Fields
+## 8. Types for Model Fields
 
 - **String:** Limited to 255 characters (depending on DBMS) Use for short text fields (names, emails, etc)
 - **Text:** Unlimited length (depending on DBMS) Use for comments, blog posts, etc. General rule of thumb: if it's captured via textarea, use Text. For input using textfields, use string.
@@ -120,7 +120,7 @@ $ rake routes
 - **DateTime:** Stores both date and time
 - **Timestamp:** Stores both date and time Note: For the purposes of Rails, both Timestamp and DateTime mean the same thing (use either type to store both date and time). For the TL;DR description of why both exist, read the bottom paragraph.
 
-## 10\. Nice to have GEMs
+## 9. Nice to have GEMs
 
 - haml
 - devise
